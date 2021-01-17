@@ -1098,7 +1098,15 @@ video#video_background {
 /**** /. steps section *****/
 
 /**** services section *****/
-
+.services-elements{
+	overflow: hidden;
+}
+.services-elements .services-carousel .slide{
+	flex: 0 0 33.3%!important;
+}
+.services-carousel {
+	display: flex;
+}
 .services-arrow {
 	display: flex;
 	justify-content: center;

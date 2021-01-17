@@ -1,8 +1,7 @@
 const sendFormData = () => {
     const errorMessage = 'Произошла ошибка',
         loadingMessage = 'Идет отправка...',
-        successMessage = 'Заявка успешно отправлена',
-        errorData = 'Введите корректные данные';
+        successMessage = 'Заявка успешно отправлена';
 
 
     const form = document.querySelector('[name="form-callback"]');
@@ -11,24 +10,24 @@ const sendFormData = () => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        let validInputs = false;
-        form.querySelectorAll('input').forEach((input)  => {
+        form.appendChild(message);
+        const inputs = form.querySelectorAll('input');
+        for(let i = 0; i < inputs.length; i++){
 
-            if(input.matches('[name="tel"]')){
-                if(!input.value.match(/^\+?([78])?\d{6,10}$/)){
+            if(inputs[i].matches('[name="tel"]')){
+                if(!inputs[i].value.match(/^\+?([78])?\d{6,10}$/)){
+                    message.textContent = 'Введите корректный номер телефона';
                     return;
                 }
             }
-            if(input.matches('[name="fio"]')){
-                if(!input.value.match(/^[а-яА-Я\s]{2,}$/ug)){
+            if(inputs[i].matches('[name="fio"]')){
+                if(!inputs[i].value.match(/^[а-яА-Я\s]{2,}$/ug)){
+                    message.textContent = 'Введите "Ваше Имя"';
                     return;
                 }
             }
-            validInputs = true;
-        });
-
-        if(validInputs){
-            form.appendChild(message);
+        }
+            
             message.textContent = loadingMessage;
             const data = new FormData(form);
             postData(data)
@@ -48,11 +47,7 @@ const sendFormData = () => {
                 message.textContent = errorMessage;
                 console.error(error);
             });
-        } else {
-            message.textContent = errorData;
-        }
-
-        
+  
     });
 
     const postData = (userData) => {
