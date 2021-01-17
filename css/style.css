@@ -856,6 +856,10 @@ hr.white {
 	overflow: hidden;
 	height: 450px;
 	position: relative;
+	display: none;
+}
+.top-slider .active {
+	display: block;
 }
 .top-slider .item:before {
 	content: "";
@@ -870,6 +874,34 @@ hr.white {
 .top-slider .table {
 	position: relative;
 	z-index: 10;
+}
+.slider-dots {
+	position:absolute;
+	bottom:20px;
+	width:100%;margin:20px auto 0;
+	display:flex;
+	-webkit-box-pack:center;
+	-ms-flex-pack:center;
+	justify-content:center;
+	z-index:10;
+}
+.slider-dots .dot {
+	cursor:pointer;
+	height:16px;
+	width:16px;
+	margin:0 10px;
+	border-radius:50%;
+	border:solid #fff;
+	display:inline-block;
+}
+.slider-dots .dot .active {
+	background-color:#fff;
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2);
+}.slider-dots .dot:hover {
+	background-color:#fff;
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2);
 }
 .video-block {
 	height: 100%;
