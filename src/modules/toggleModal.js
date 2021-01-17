@@ -1,31 +1,18 @@
 const toggleModal = () => {
-    const btnCallback = document.querySelectorAll('.callback-btn'),
-        btnServices = document.querySelector('.button-services'),
-        modalCallback = document.getElementById('callback'),
+    const modalCallback = document.getElementById('callback'),
         modalOverlay = document.querySelector('.modal-overlay'),
-        modalClose = document.querySelector('.modal-close');
+        body = document.querySelector('body');
 
 
-        btnCallback.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                modalCallback.style.display = 'flex';
+        body.addEventListener('click', (event) => {
+            let target = event.target;
+            if(target.matches('.callback-btn') || target.matches('.button-services') || target.matches('[href="#application"]')){
+                modalCallback.style.display = 'block';
                 modalOverlay.style.display = 'block';
-          
-            });
-        });
-
-        btnServices.addEventListener('click', () => {
-            modalCallback.style.display = 'flex';
-            modalOverlay.style.display = 'block';
-        });
-
-        modalClose.addEventListener('click', () => {
-            modalCallback.style.display = 'none';
-            modalOverlay.style.display = 'none';
-        });
-        modalOverlay.addEventListener('click', () => {
-            modalCallback.style.display = 'none';
-            modalOverlay.style.display = 'none';
+            } else if(target.closest('.modal-close') || target.matches('.modal-overlay')){
+                modalCallback.style.display = 'none';
+                modalOverlay.style.display = 'none';
+            }
         });
 
 };
