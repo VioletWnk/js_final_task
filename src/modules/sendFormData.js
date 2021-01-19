@@ -39,9 +39,11 @@ const sendFormData = () => {
                 form.querySelectorAll('input').forEach((input) => {
                     if(input.type != 'submit'){
                         input.value = '';
-                    }
-                    
-                }); 
+                    }  
+                });
+                setTimeout(() => {
+                    message.textContent = '';
+                }, 3000) 
             })
             .catch((error) => {
                 message.textContent = errorMessage;

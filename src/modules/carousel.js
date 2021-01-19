@@ -13,7 +13,7 @@ const carousel = () => {
 
         if(target.matches('.arrow-left') && position > 0){
             --position;
-        } else if(target.matches('.arrow-right') && position < (allSlides.length - 1)){
+        } else if(target.matches('.arrow-right') && position < (allSlides.length - slidestoShow)){
             ++position;
         }
 
